@@ -13,7 +13,7 @@ Before you begin, ensure you have met the following requirements:
 
 ## Architecture
 
-The project is based on Laravel. and it used a standard installation.
+The project is based on Laravel and it uses a standard installation.
 
 - **JWT**:  Handling authentication
 - **API/V1** The prefix for the endpoints
