@@ -1,0 +1,532 @@
+{
+	"info": {
+		"_postman_id": "a1932dae-8c4f-48a0-bede-90c709228dff",
+		"name": "nulldata",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28210178"
+	},
+	"item": [
+		{
+			"name": "Create Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check if status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if response has format JSON\", function() {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if json has an access key\", function() {\r",
+							"    pm.response.to.have.jsonBody(\"access\");\r",
+							"    var json = JSON.parse(responseBody);\r",
+							"    pm.environment.set(\"token\", `Bearer ${json.access}`);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbnVsbGRhdGEudGVzdC9hcGkvdjEvYXV0aC9sb2dpbiIsImlhdCI6MTY4NzkyMjg0OCwiZXhwIjoxNjg3OTI2NDQ4LCJuYmYiOjE2ODc5MjI4NDgsImp0aSI6InJadFFtVTJUZkxSOWNoYWQiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.anYv1sehm_UMHWMAttgpcTJNZkQBNCD6e_Hn7g8ZDVk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <my-token>",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Jose Banuelos\",\r\n    \"email\":\"stanmr135@gmail.com\",\r\n    \"position\":\"Senior Full Stack Developer\",\r\n    \"date_of_birth\":\"12-12-1994\",\r\n    \"address\":\"Calzada de los Paraisos 6904, Ciudad Granja\",\r\n    \"skills\": [\r\n        {\r\n            \"name\":\"Gaming\",\r\n            \"level\":4\r\n        },\r\n        {\r\n            \"name\":\"Music\",\r\n            \"level\":3\r\n        },\r\n        {\r\n            \"name\":\"Stream Production\",\r\n            \"level\":5\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "nulldata.test/api/v1/employees",
+					"host": [
+						"nulldata",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check if status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if response has format JSON\", function() {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if json has an access key\", function() {\r",
+							"    pm.response.to.have.jsonBody(\"access\");\r",
+							"    var json = JSON.parse(responseBody);\r",
+							"    pm.environment.set(\"token\", `Bearer ${json.access}`);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbnVsbGRhdGEudGVzdC9hcGkvdjEvYXV0aC9sb2dpbiIsImlhdCI6MTY4NzkyMjg0OCwiZXhwIjoxNjg3OTI2NDQ4LCJuYmYiOjE2ODc5MjI4NDgsImp0aSI6InJadFFtVTJUZkxSOWNoYWQiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.anYv1sehm_UMHWMAttgpcTJNZkQBNCD6e_Hn7g8ZDVk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <my-token>",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Jose Banuelos\",\r\n    \"email\":\"stanmr135@gmail.com\",\r\n    \"position\":\"Senior Full Stack Developer\",\r\n    \"date_of_birth\":\"12-12-1994\",\r\n    \"address\":\"Calzada de los Paraisos 6904, Ciudad Granja\",\r\n    \"skills\": [\r\n        {\r\n            \"name\":\"Gaming\",\r\n            \"level\":4\r\n        },\r\n        {\r\n            \"name\":\"Music\",\r\n            \"level\":3\r\n        },\r\n        {\r\n            \"name\":\"Stream Production\",\r\n            \"level\":5\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "nulldata.test/api/v1/employees",
+					"host": [
+						"nulldata",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Employees",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check if status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if response has format JSON\", function() {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if json has an access key\", function() {\r",
+							"    pm.response.to.have.jsonBody(\"access\");\r",
+							"    var json = JSON.parse(responseBody);\r",
+							"    pm.environment.set(\"token\", `Bearer ${json.access}`);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbnVsbGRhdGEudGVzdC9hcGkvdjEvYXV0aC9sb2dpbiIsImlhdCI6MTY4NzkyMjg0OCwiZXhwIjoxNjg3OTI2NDQ4LCJuYmYiOjE2ODc5MjI4NDgsImp0aSI6InJadFFtVTJUZkxSOWNoYWQiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.anYv1sehm_UMHWMAttgpcTJNZkQBNCD6e_Hn7g8ZDVk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <my-token>",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Jose Banuelos",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "stanmr135@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "position",
+							"value": "Senior Full Stack Developer",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "date_of_birth",
+							"value": "12-12-1994",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "Calzada de los Paraisos 6904, Ciudad Granja",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "nulldata.test/api/v1/employees",
+					"host": [
+						"nulldata",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check if status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if response has format JSON\", function() {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if json has an access key\", function() {\r",
+							"    pm.response.to.have.jsonBody(\"access\");\r",
+							"    var json = JSON.parse(responseBody);\r",
+							"    pm.environment.set(\"token\", `Bearer ${json.access}`);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbnVsbGRhdGEudGVzdC9hcGkvdjEvYXV0aC9sb2dpbiIsImlhdCI6MTY4NzkyMjg0OCwiZXhwIjoxNjg3OTI2NDQ4LCJuYmYiOjE2ODc5MjI4NDgsImp0aSI6InJadFFtVTJUZkxSOWNoYWQiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.anYv1sehm_UMHWMAttgpcTJNZkQBNCD6e_Hn7g8ZDVk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <my-token>",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Jose Banuelos",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "stanmr135@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "position",
+							"value": "Senior Full Stack Developer",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "date_of_birth",
+							"value": "12-12-1994",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "Calzada de los Paraisos 6904, Ciudad Granja",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "nulldata.test/api/v1/employees/4",
+					"host": [
+						"nulldata",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check if status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if response has format JSON\", function() {\r",
+							"    pm.response.to.be.json;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check if json has an access key\", function() {\r",
+							"    pm.response.to.have.jsonBody(\"access\");\r",
+							"    var json = JSON.parse(responseBody);\r",
+							"    pm.environment.set(\"token\", `Bearer ${json.access}`);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbnVsbGRhdGEudGVzdC9hcGkvdjEvYXV0aC9sb2dpbiIsImlhdCI6MTY4NzkyMjg0OCwiZXhwIjoxNjg3OTI2NDQ4LCJuYmYiOjE2ODc5MjI4NDgsImp0aSI6InJadFFtVTJUZkxSOWNoYWQiLCJzdWIiOiIxIiwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.anYv1sehm_UMHWMAttgpcTJNZkQBNCD6e_Hn7g8ZDVk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <my-token>",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Jose Banuelos",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "stanmr135@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "position",
+							"value": "Senior Full Stack Developer",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "date_of_birth",
+							"value": "12-12-1994",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "Calzada de los Paraisos 6904, Ciudad Granja",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "nulldata.test/api/v1/employees/4",
+					"host": [
+						"nulldata",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employees",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "alanna60@example.net",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Jose Banuelos",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "nulldata.test/api/v1/auth/login",
+					"host": [
+						"nulldata",
+						"test"
+					],
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
